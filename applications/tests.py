@@ -1,6 +1,6 @@
 from django.urls import resolve
 from django.test import TestCase
-from applications.views import home
+from applications.views import home, register
 from django.http import HttpRequest
 
 class HomePageTest(TestCase):
@@ -31,3 +31,4 @@ class HomePageTest(TestCase):
 
     def test_register_url_resolves_to_register_page(self):
         found = resolve('/register')
+        self.assertEqual(found.func, register)
