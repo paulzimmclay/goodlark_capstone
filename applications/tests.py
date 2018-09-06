@@ -16,14 +16,18 @@ class HomePageTest(TestCase):
         self.assertEqual(found.func, home)
 
     def test_home_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = home(request)
-        html = response.content.decode('utf8')
+        html = self.get_page_contents(home)
         self.assertTrue(html.startswith('<html>'))
         self.assertIn('<title>Goodlark Educational Foundation</title>', html)
         self.assertTrue(html.endswith('</html>'))
 
     def test_home_page_has_link_to_register(self):
-        home_html = self.get_page_contents(home)
-        print(home_html)
-        self.assertIn('<a href="/register">Register</a>'))
+        html = self.get_page_contents(home)
+        self.assertIn('<a href="/register" id="register_button">Register</a>', html)
+
+    def test_home_page_has_link_to_login(self):
+        html = self.get_page_contents(home)
+        self.assertIn('<a href="/login" id="login_button">Login</a>', html)
+
+    def test_register_url_resolves_to_register_page(self):
+        found = resolve('/register')
