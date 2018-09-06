@@ -32,3 +32,14 @@ class HomePageTest(TestCase):
     def test_register_url_resolves_to_register_page(self):
         found = resolve('/register')
         self.assertEqual(found.func, register)
+
+    def test_register_returns_correct_html(self):
+        response = self.client.get('/register')
+        self.assertTemplateUsed(response, 'register.html')
+
+    def test_register_has_registration_form(self):
+        html = self.get_page_contents(register)
+        self.assertIn('<form>', html)
+
+    def test_form_has_user_inputs(self):
+        pass
