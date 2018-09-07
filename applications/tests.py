@@ -3,6 +3,13 @@ from django.test import TestCase
 from applications.views import home, register
 from django.http import HttpRequest
 
+
+def = get_page_contents(view):
+    request = HttpRequest()
+    response = view(request)
+    html = response.content.decode('utf8')
+    return html
+
 class HomePageTest(TestCase):
 
     def get_page_contents(self, view):
@@ -37,9 +44,16 @@ class HomePageTest(TestCase):
         response = self.client.get('/register')
         self.assertTemplateUsed(response, 'register.html')
 
+class RegistrationFormTest(TestCase):
+
     def test_register_has_registration_form(self):
         html = self.get_page_contents(register)
         self.assertIn('<form>', html)
 
     def test_form_has_user_inputs(self):
-        pass
+        html = self.get_page_contents(register)
+        self.assertIn('<input type="">', html)
+
+    def test_registration_form_is_using_correct_form(self):
+        form = RegistrationForm()
+        self.fail(form.as_p())
