@@ -46,7 +46,7 @@ class NewVisitorRegister(unittest.TestCase):
 
     #  with a form for creating a new user
     def test_register_submit_creates_a_new_user(self):
-        pass
+        
 
 
 if __name__ == '__main__':

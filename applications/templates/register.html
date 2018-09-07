@@ -1,5 +1,8 @@
 <html>
-    <form>
-        <input>
-    </form>
+<h2>Sign up</h2>
+<form id="registration_form" method="post" action="{url 'applications:register'}">
+  {% csrf_token %}
+  {{ registration_form }}
+  <input type="submit" name="submit" value="Register" />
+
 </html>
