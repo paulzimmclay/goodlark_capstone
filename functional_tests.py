@@ -13,39 +13,36 @@ class NewVisitorRegister(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    # When a prospective goodlark recipient arrives at the homepage...
-    def test_user_can_load_the_homepage(self):
+    def test_new_user_creates_account_and_fills_out_form(self):
+        # When Penny, a high school senior, goes to apply for a Goodlark scholarship, she navigates to
+        # the goodlark homepage. 
         self.browser.get(self.url)
         self.assertIn('Goodlark Educational Foundation', self.browser.title)
 
-    # there is an affordance to navigate to a register page, and
-    def test_home_has_a_link_to_register_page(self):
+        # Here she sees an affordance to register and create a profile. 
         self.browser.get(self.url)
         register_link = self.browser.find_element_by_id('register_button')
-        print('this is the register link', register_link.get_attribute('href'))
         self.assertIn(
             '/register',
             register_link.get_attribute('href')
         )
 
-    # there is an affordance to navigate to a login page and log in.
-    def test_home_has_a_link_to_login_page(self):
+        # Clicking on the register affordance takes her to the register page. 
+        self.browser.get(self.url)
+        login_link = self.browser.find_element_by_id('register_button')
+        login_link.click()
+        self.assertIn('Register', self.browser.title)
+
+        
+
+    
+    def test_user_can_revisit_login_and_edit_existing_application(self):
         self.browser.get(self.url)
         login_link = self.browser.find_element_by_id('login_button')
         self.assertIn(
             '/login',
             login_link.get_attribute('href')
         )
-
-    # Clicking on the register affordance navigates to a register page...
-    def test_clicking_register_goes_to_a_registration_form(self):
-        self.browser.get(self.url)
-        login_link = self.browser.find_element_by_id('register_button')
-        login_link.click()
-        self.assertIn('Register', self.browser.title)
-
-    #  with a form for creating a new user
-    def test_register_submit_creates_a_new_user(self):
         
 
 
