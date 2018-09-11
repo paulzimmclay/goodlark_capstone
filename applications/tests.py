@@ -43,6 +43,10 @@ class HomePageTest(TestCase):
 
 class RegistrationFormTest(TestCase):
 
+    def test_registration_page_has_register_in_title(self):
+        html = get_page_contents(register)
+        self.assertIn('<title>Register</title>', html)
+    
     def test_register_has_registration_form(self):
         html = get_page_contents(register)
         self.assertIn('<form', html)
@@ -67,17 +71,17 @@ class RegistrationFormTest(TestCase):
         self.assertEqual(user.email, 'coffee@coffee.com')
         self.assertEqual(user.password, 'coffeecoffee')
 
-    def test_user_can_be_created_in_database(self):
-        new_user = User.objects.create_user({
-            'first_name':'coffee',
-            'last_name':'coffee',
-            'username':'coffee',
-            'email':'coffee@coffee.com',
-            'password':'coffeecoffee',
-        })
-        new_user.save()
-        print(new_user)
-        # self.assertEqual
+    # def test_user_can_be_created_in_database(self):
+    #     new_user = User.objects.create_user({
+    #         'first_name':'coffee',
+    #         'last_name':'coffee',
+    #         'username':'coffee',
+    #         'email':'coffee@coffee.com',
+    #         'password':'coffeecoffee',
+    #     })
+    #     new_user.save()
+    #     print(new_user)
+    #    self.assertEqual
 
         
 

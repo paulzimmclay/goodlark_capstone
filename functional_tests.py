@@ -32,18 +32,44 @@ class NewVisitorRegister(unittest.TestCase):
         login_link = self.browser.find_element_by_id('register_button')
         login_link.click()
         self.assertIn('Register', self.browser.title)
+        time.sleep(3)
+
+        # She fills out the form and submits it
+        email_field = self.browser.find_element_by_id('id_email')
+        email_field.send_keys('penny@pennyzc.com')
+
+        password_field = self.browser.find_element_by_id('id_password')
+        password_field.send_keys('unomoobubba')
+
+        first_name_field = self.browser.find_element_by_id('id_first_name')
+        first_name_field.send_keys('penny')
+
+        last_name_field = self.browser.find_element_by_id('id_last_name')
+        last_name_field.send_keys('zc')
+
+        username_field = self.browser.find_element_by_id('id_username')
+        username_field.send_keys('pennyzc')
+
+        submit_button = self.browser.find_element_by_name('submit')
+        submit_button.click()
+
+        time.sleep(2)
+
+        # Penny is now logged in, and can click on the 'application form' affordance
+        application_form_button = self.browser.find_element_by_id('application_form_button')
+        application_form_button.click()
 
         
 
     
-    def test_user_can_revisit_login_and_edit_existing_application(self):
-        self.browser.get(self.url)
-        login_link = self.browser.find_element_by_id('login_button')
-        self.assertIn(
-            '/login',
-            login_link.get_attribute('href')
-        )
-        
+    # def test_user_can_revisit_login_and_edit_existing_application(self):
+        # self.browser.get(self.url)
+        # login_link = self.browser.find_element_by_id('login_button')
+        # self.assertIn(
+        #     '/login',
+        #     login_link.get_attribute('href')
+        # )
+        # pass
 
 
 if __name__ == '__main__':
