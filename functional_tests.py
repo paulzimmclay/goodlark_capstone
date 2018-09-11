@@ -30,6 +30,7 @@ class NewVisitorRegister(unittest.TestCase):
         # Clicking on the register affordance takes her to the register page. 
         self.browser.get(self.url)
         login_link = self.browser.find_element_by_id('register_button')
+        time.sleep(1)
         login_link.click()
         self.assertIn('Register', self.browser.title)
         time.sleep(3)
@@ -37,12 +38,14 @@ class NewVisitorRegister(unittest.TestCase):
         # She fills out the form and submits it
         email_field = self.browser.find_element_by_id('id_email')
         email_field.send_keys('penny@pennyzc.com')
-
+        time.sleep(1)
         password_field = self.browser.find_element_by_id('id_password')
         password_field.send_keys('unomoobubba')
+        time.sleep(1)
 
         first_name_field = self.browser.find_element_by_id('id_first_name')
         first_name_field.send_keys('penny')
+        time.sleep(1)
 
         last_name_field = self.browser.find_element_by_id('id_last_name')
         last_name_field.send_keys('zc')
@@ -53,7 +56,7 @@ class NewVisitorRegister(unittest.TestCase):
         submit_button = self.browser.find_element_by_name('submit')
         submit_button.click()
 
-        time.sleep(2)
+        time.sleep(1)
 
         # Penny is now logged in, and can click on the 'application form' affordance
         application_form_button = self.browser.find_element_by_id('application_form_button')
