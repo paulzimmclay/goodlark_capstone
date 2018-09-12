@@ -16,6 +16,7 @@ def regular_application(request):
         })
 
     application_form = ApplicationForm(initial={
+        'user': request.user.id,
         'mailing_address': 'checka',
     })
 

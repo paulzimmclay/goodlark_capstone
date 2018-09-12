@@ -5,6 +5,4 @@ class ApplicationForm(forms.ModelForm):
     
     class Meta:
         model = ApplicationForm
-        fields = (
-            'mailing_address',
-        )
+        fields = '__all__'

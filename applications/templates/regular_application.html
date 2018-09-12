@@ -9,7 +9,16 @@
   <form id="registration_form" method="post" action="{% url 'applications:home' %}">
     {% csrf_token %}
     {{ application_user_form }}
-    {{ application_form }}
+    <!-- {{ application_form }} -->
+
+    {% for field in application_form %}
+      {% if field.name != "user" %}
+        <tr>
+          <td>{{ field.label }}</td>
+          <td>{{ field }}</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
     <input type="submit" name="submit" value="Save" />
 </body>
 
