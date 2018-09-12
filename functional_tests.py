@@ -1,6 +1,7 @@
-from selenium import webdriver
-import unittest
 import time
+import unittest
+
+from selenium import webdriver
 
 
 class NewVisitorRegister(unittest.TestCase):

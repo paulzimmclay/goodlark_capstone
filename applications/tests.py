@@ -1,9 +1,10 @@
-from django.urls import resolve
-from django.test import TestCase
-from applications.views import home, register
-from django.http import HttpRequest
-from applications.forms import RegistrationForm
 from django.contrib.auth.models import User
+from django.http import HttpRequest
+from django.test import TestCase
+from django.urls import resolve
+
+from applications.forms import RegistrationForm
+from applications.views import home, register
 
 ### Cross-test Helper Functions:
 
@@ -82,6 +83,3 @@ class RegistrationFormTest(TestCase):
     #     new_user.save()
     #     print(new_user)
     #    self.assertEqual
-
-        
-
