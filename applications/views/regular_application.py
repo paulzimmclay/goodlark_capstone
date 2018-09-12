@@ -14,7 +14,14 @@ def regular_application(request):
         'last_name': request.user.last_name,
         'email': request.user.email,
         })
-    application_form = ApplicationForm()
+
+    application_form = ApplicationForm(initial={
+        'mailing_address': 'checka',
+    })
+
+    print(application_form.as_p())
+
+
     return render(request, 'regular_application.html', {
         'application_user_form': application_user_form,
         'application_form': application_form,
