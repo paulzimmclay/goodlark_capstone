@@ -1,1 +1,1 @@
-from .application_form import ApplicationForm
+from .application_form import ApplicationFormModel

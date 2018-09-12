@@ -4,5 +4,5 @@ from applications.models import *
 class ApplicationForm(forms.ModelForm):
     
     class Meta:
-        model = ApplicationForm
+        model = ApplicationFormModel
         fields = '__all__'

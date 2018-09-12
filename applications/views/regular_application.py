@@ -1,23 +1,23 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 
+
 from applications.forms import ApplicationUserForm, ApplicationForm
-from applications.models import ApplicationForm
+from applications.models import ApplicationFormModel
 
 
 @login_required
 def regular_application(request):
     if request.method == 'POST':
         u = User.objects.get(id=request.user.id)
-        application = ApplicationForm
         application_user_form = ApplicationUserForm(request.POST, instance=request.user)
-        application_form = ApplicationForm(request.POST, instance=u.id)
+        application_form = ApplicationForm(request.POST)
 
-        if profile_form.is_valid() and user_form.is_valid():
-            user_form.save()
-            profile_form.save()
+        if application_user_form.is_valid() and application_form.is_valid():
+            application_user_form.save()
+            application_form.save()
             return HttpResponseRedirect('/')
         else: 
             print('forms not valid')
@@ -31,7 +31,6 @@ def regular_application(request):
 
     application_form = ApplicationForm(initial={
         'user': request.user.id,
-        'mailing_address': 'checka',
     })
 
     print(application_form.as_p())
