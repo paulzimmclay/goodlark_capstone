@@ -12,6 +12,7 @@ class NewVisitorRegister(unittest.TestCase):
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
+        time.sleep(5)
         self.browser.quit()
 
     def test_new_user_creates_account_and_fills_out_form(self):
@@ -69,6 +70,18 @@ class NewVisitorRegister(unittest.TestCase):
 
         # Penny sees a new page with the application form. Some of the fields are already filled out:
         first_name = self.browser.find_element_by_id('id_first_name')
+        first_name_value = first_name.get_attribute('value')
+        self.assertIsNotNone(first_name_value)
+        
+        last_name = self.browser.find_element_by_id('id_last_name')
+        last_name_value = last_name.get_attribute('value')
+        self.assertIsNotNone(last_name_value)
+
+        # There are empty fields that she fills out:
+        mailing_address = self.browser.find_element_by_id('id_mailing_address')
+        mailing_address_value = mailing_address.get_attribute('value')
+        self.assertIsNone(mailing_address_value)
+        
 
 
 if __name__ == '__main__':
