@@ -6,17 +6,20 @@
 
 <body>
   <h2>Application Form:</h2>
-  <form id="registration_form" method="post" action="{% url 'applications:home' %}">
+  <form id="registration_form" method="post" action="{% url 'applications:regular_application' %}">
     {% csrf_token %}
-    {{ application_user_form }}
-    <!-- {{ application_form }} -->
+
+    {% for field in application_user_form %}
+      <p>
+        {{ field.label }}: {{ field }}
+      </p>
+    {% endfor %}
 
     {% for field in application_form %}
       {% if field.name != "user" %}
-        <tr>
-          <td>{{ field.label }}</td>
-          <td>{{ field }}</td>
-        </tr>
+        <p>
+          {{ field.label }}: {{ field }}
+        </p>
       {% endif %}
     {% endfor %}
     <input type="submit" name="submit" value="Save" />
