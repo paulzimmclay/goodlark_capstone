@@ -1,0 +1,15 @@
+<html>
+
+<head>
+  <title>Regular Application</title>
+</head>
+
+<body>
+  <h2>Application Form:</h2>
+  <form id="registration_form" method="post" action="{% url 'applications:home' %}">
+    {% csrf_token %}
+    {{ application_user_form }}
+    <input type="submit" name="submit" value="Register" />
+</body>
+
+</html>

@@ -1,1 +1,2 @@
-from . import registration_form
+from .registration_form import RegistrationForm
+from .application_user_form import ApplicationUserForm

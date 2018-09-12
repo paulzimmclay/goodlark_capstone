@@ -1,4 +1,4 @@
-from forms import RegistrationForm
+from applications.forms import RegistrationForm
 from django.shortcuts import render
 from . import login_user
 

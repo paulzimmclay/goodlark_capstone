@@ -62,20 +62,13 @@ class NewVisitorRegister(unittest.TestCase):
         time.sleep(.5)
 
         # Penny is now logged in, and can click on the 'application form' affordance
-        application_form_button = self.browser.find_element_by_id('application_form_button')
+        application_form_button = self.browser.find_element_by_id('regular_application_button')
         application_form_button.click()
 
         time.sleep(.5)
 
-    
-    # def test_user_can_revisit_login_and_edit_existing_application(self):
-        # self.browser.get(self.url)
-        # login_link = self.browser.find_element_by_id('login_button')
-        # self.assertIn(
-        #     '/login',
-        #     login_link.get_attribute('href')
-        # )
-        # pass
+        # Penny sees a new page with the application form. Some of the fields are already filled out:
+        first_name = self.browser.find_element_by_id('id_first_name')
 
 
 if __name__ == '__main__':
