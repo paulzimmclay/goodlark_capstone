@@ -41,10 +41,6 @@ class NewVisitorRegister(unittest.TestCase):
         email_field.send_keys('penny@pennyzc.com')
         time.sleep(.5)
 
-        password_field = self.browser.find_element_by_id('id_password')
-        password_field.send_keys('unomoobubba')
-        time.sleep(.5)
-
         first_name_field = self.browser.find_element_by_id('id_first_name')
         first_name_field.send_keys('penny')
         time.sleep(.5)
@@ -55,6 +51,10 @@ class NewVisitorRegister(unittest.TestCase):
 
         username_field = self.browser.find_element_by_id('id_username')
         username_field.send_keys('pennyzc')
+        time.sleep(.5)
+
+        password_field = self.browser.find_element_by_id('id_password')
+        password_field.send_keys('unomoobubba')
         time.sleep(.5)
 
         submit_button = self.browser.find_element_by_name('submit')
@@ -80,7 +80,13 @@ class NewVisitorRegister(unittest.TestCase):
         # There are empty fields that she fills out:
         mailing_address = self.browser.find_element_by_id('id_mailing_address')
         mailing_address_value = mailing_address.get_attribute('value')
-        self.assertIsNone(mailing_address_value)
+        self.assertEqual('', mailing_address_value)
+
+        mailing_address.send_keys('123 Scholar St.')
+
+        # She submits the form
+        save_button = self.browser.find_element_by_id('application_save')
+        save_button.click()
         
 
 

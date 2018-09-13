@@ -5,4 +5,4 @@ class ApplicationForm(forms.ModelForm):
     
     class Meta:
         model = ApplicationFormModel
-        fields = '__all__'
+        exclude = ['user']

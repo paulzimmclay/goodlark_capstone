@@ -16,13 +16,13 @@
     {% endfor %}
 
     {% for field in application_form %}
-      {% if field.name != "user" %}
+
         <p>
           {{ field.label }}: {{ field }}
         </p>
-      {% endif %}
+
     {% endfor %}
-    <input type="submit" name="submit" value="Save" />
+    <input id="application_save" type="submit" name="submit" value="Save" />
 </body>
 
 </html>
