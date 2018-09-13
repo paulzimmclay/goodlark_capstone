@@ -11,9 +11,10 @@ from applications.models import ApplicationFormModel
 @login_required
 def regular_application(request):
     if request.method == 'POST':
-        u = User.objects.get(id=request.user.id)
+        application = ApplicationFormModel.objects.get(id=request.user.id)
+
         application_user_form = ApplicationUserForm(request.POST, instance=request.user)
-        application_form = ApplicationForm(request.POST)
+        application_form = ApplicationForm(request.POST, instance=application)
 
         if application_user_form.is_valid() and application_form.is_valid():
             application_user_form.save()

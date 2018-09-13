@@ -1,5 +1,7 @@
 from applications.forms import RegistrationForm
 from django.shortcuts import render
+
+from applications.models import ApplicationFormModel
 from . import login_user
 
 def register(request):
@@ -14,6 +16,9 @@ def register(request):
 
             user.set_password(user.password)
             user.save()
+
+            application_info = ApplicationFormModel(user_id=user.id)
+            application_info.save()
 
             registered = True
 
