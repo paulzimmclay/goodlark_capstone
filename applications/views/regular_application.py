@@ -10,8 +10,9 @@ from applications.models import ApplicationFormModel
 
 @login_required
 def regular_application(request):
+    application = ApplicationFormModel.objects.get(user_id=request.user.id)
+    
     if request.method == 'POST':
-        application = ApplicationFormModel.objects.get(user_id=request.user.id)
 
         application_user_form = ApplicationUserForm(request.POST, instance=request.user)
         application_form = ApplicationForm(request.POST, instance=application)
@@ -33,11 +34,11 @@ def regular_application(request):
         'email': request.user.email,
         })
 
+
     application_form = ApplicationForm(initial={
         'user': request.user.id,
+        'mailing_address': application.mailing_address
     })
-
-    print(application_form.as_p())
 
 
     return render(request, 'regular_application.html', {

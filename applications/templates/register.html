@@ -1,15 +1,12 @@
-<html>
+{% extends "home.html" %}
 
-<head>
-  <title>Register</title>
-</head>
+{% block title %}Register{% endblock %}
 
-<body>
+{% block content %}
   <h2>Sign up</h2>
-  <form id="registration_form" method="post" action="{% url 'applications:register' %}">
-    {% csrf_token %}
-    {{ registration_form }}
-    <input type="submit" name="submit" value="Register" />
-</body>
-
-</html>
+    <form id="registration_form" method="post" action="{% url 'applications:register' %}">
+        {% csrf_token %}
+        {{ registration_form }}
+      <input type="submit" name="submit" value="Register" />
+    </form>
+{% endblock %}

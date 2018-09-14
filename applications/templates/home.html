@@ -1,7 +1,40 @@
 <html>
-<title>Goodlark Educational Foundation</title>
-<a href="/register" id="register_button">Register</a>
-<a href="/login_user" id="login_button">Login</a>
-<a href="/regular_application" id="regular_application_button">Application</a>
+
+<head>
+    <title>{% block title %}Goodlark Educational Foundation{% endblock %}</title>
+</head>
+
+<body>
+
+
+    <a href="/register" id="register_button">Register</a>
+    <a href="/login_user" id="login_button">Login</a>
+    <a href="/logout_user" id="logout_button">Logout</a>
+    <a href="/regular_application" id="regular_application_button">Application</a>
+
+    <div>
+        {% block content %}
+
+        The Goodlark Educational Foundation will celebrate its 30th year in 2018! It’s been an exciting ride since we
+        were formed in 1988 with proceeds from Goodlark Hospital. Our mission, then and now, has been to help promote
+        education in Dickson, Hickman and Humphreys Counties, as that was the area the hospital served. For the 2017-18
+        school year, the foundation has so far funded forty college, technical and graduate school scholarships
+        (totaling $69,000), the Jackson Medical Scholarship ($10,000), the Mills Medical Scholarship ($10,000),
+        Valedictorian Scholarships ($6,000), and two Deason Healthcare Scholarships ($5,000 each). We sponsored our
+        12th annual essay contest for high school juniors with scholarship prizes of $3,500. Over the years, we have
+        also supported many educational programs in the community and individual projects at area schools.
+        <br>
+        <br>
+        Goodlark Educational Foundation<br>
+        445 Hwy. 46 S<br>
+        Suite 29 #213<br>
+        Dickson, TN 37055<br>
+        <br>
+        <br>
+        615-446-9156
+
+        {% endblock %}
+    </div>
+</body>
 
 </html>

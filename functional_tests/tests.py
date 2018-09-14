@@ -1,13 +1,12 @@
+from django.test import LiveServerTestCase
 import time
-import unittest
+
 
 from selenium import webdriver
 
 
-class NewVisitorRegister(unittest.TestCase):
+class NewVisitorRegister(LiveServerTestCase):
 
-    url = 'http://localhost:8000'
-    
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -15,14 +14,17 @@ class NewVisitorRegister(unittest.TestCase):
         time.sleep(5)
         self.browser.quit()
 
+    def url(self):
+        return self.live_server_url
+    
     def test_new_user_creates_account_and_fills_out_form(self):
         # When Penny, a high school senior, goes to apply for a Goodlark scholarship, she navigates to
         # the goodlark homepage. 
-        self.browser.get(self.url)
+        self.browser.get(self.url())
         self.assertIn('Goodlark Educational Foundation', self.browser.title)
 
         # Here she sees an affordance to register and create a profile. 
-        self.browser.get(self.url)
+        self.browser.get(self.url())
         register_link = self.browser.find_element_by_id('register_button')
         self.assertIn(
             '/register',
@@ -30,7 +32,7 @@ class NewVisitorRegister(unittest.TestCase):
         )
 
         # Clicking on the register affordance takes her to the register page. 
-        self.browser.get(self.url)
+        self.browser.get(self.url())
         login_link = self.browser.find_element_by_id('register_button')
         login_link.click()
         self.assertIn('Register', self.browser.title)
@@ -87,6 +89,29 @@ class NewVisitorRegister(unittest.TestCase):
         # She submits the form
         save_button = self.browser.find_element_by_id('application_save')
         save_button.click()
+
+        # She logs out, then logs back in:
+        logout_button = self.browser.find_element_by_id('logout_button')
+        logout_button.click()
+
+        login_button = self.browser.find_element_by_id('login_button')
+        login_button.click()
+
+        username_field = self.browser.find_element_by_name('username')
+        username_field.send_keys('pennyzc')
+
+        password_field = self.browser.find_element_by_name('password')
+        password_field.send_keys('unomoobubba')
+
+        login_submit = self.browser.find_element_by_id('login_submit')
+        login_submit.click()
+
+        application_form_button = self.browser.find_element_by_id('regular_application_button')
+        application_form_button.click()
+
+        # Her work having been saved, she continues to fill out the form...
+        
+
         
 
 
