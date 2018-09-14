@@ -20,6 +20,12 @@ PAYER = (('mother', 'Mother'),
 YES_NO = (('yes', 'Yes'),
           ('no', 'No'),)
 
+WORK_TYPES = (
+    ('full_time','Full time'),
+    ('part_time','Part time'),
+    ('work_study','Work/Study'),
+    )
+
 
 class ApplicationFormModel(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -56,4 +62,10 @@ class ApplicationFormModel(models.Model):
     year_previously_received = models.CharField(blank=True, max_length=100, verbose_name='If so, what year(s)?')
     family_received_scholarship = models.CharField(blank=True, choices=YES_NO, max_length=20, verbose_name='Has anyone in your family ever received a Goodlark Scholarship?')
     family_member_that_received = models.CharField(blank=True, max_length=100, verbose_name='If so, please list names')
+    currently_employed = models.CharField(blank=True, choices=YES_NO, max_length=20, verbose_name='Are you currently employed?')
+    type_of_work = models.CharField(blank=True, max_length=100, verbose_name='If so, where and what type of work?')
+    hours_per_week = models.CharField(blank=True, max_length=100, verbose_name='How many hours per week?')
+    pay_per_hour = models.CharField(blank=True, max_length=100, verbose_name='Pay per hour?')
+    plan_to_work_in_college = models.CharField(blank=True, choices=YES_NO, max_length=20, verbose_name='Do you plan to work in college?')
+    expense_payer = MultiSelectField(blank=True, choices=WORK_TYPES, max_length=20, verbose_name='What type of work?')
     
