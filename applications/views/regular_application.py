@@ -34,18 +34,22 @@ def regular_application(request):
         'email': request.user.email,
         })
     
+    # dictionary of all user application fields
     application_dict = application.__dict__
+    # fields to exclude from form:
+    excluded_fields = {'id', 'user_id', '_state'}
+    # dictionary of fields to include on form
+    application_fields = {k:v for (k, v) in application_dict.items() if k not in excluded_fields}
 
-    for k, v in application_dict.items():
-        print(k: 'application'.v)
+    # generate dictionary that includes all needed keys and default values:
+    default_dict = {}
+    default_dict['user'] = request.user.id
+    for k,v in application_fields.items():
+        default_dict[k] = v
 
-    application_form = ApplicationForm(initial={
-        'user': request.user.id,
-        
+    print(default_dict)
 
-        # 'mailing_address': application.mailing_address,
-
-    })
+    application_form = ApplicationForm(initial=default_dict)
 
 
     return render(request, 'regular_application.html', {
