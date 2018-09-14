@@ -47,8 +47,6 @@ def regular_application(request):
     for k,v in application_fields.items():
         default_dict[k] = v
 
-    print(default_dict)
-
     application_form = ApplicationForm(initial=default_dict)
 
 

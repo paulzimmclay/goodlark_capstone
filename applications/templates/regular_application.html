@@ -16,7 +16,7 @@
   {% for field in application_form %}
 
   <p>
-    {{ field.label }}: {{ field }}
+    {{ field.label }}: {{ field }} {{ field.help_text }}
   </p>
 
   {% endfor %}
