@@ -33,11 +33,18 @@ def regular_application(request):
         'last_name': request.user.last_name,
         'email': request.user.email,
         })
+    
+    application_dict = application.__dict__
 
+    for k, v in application_dict.items():
+        print(k: 'application'.v)
 
     application_form = ApplicationForm(initial={
         'user': request.user.id,
-        'mailing_address': application.mailing_address
+        
+
+        # 'mailing_address': application.mailing_address,
+
     })
 
 
