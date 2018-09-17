@@ -96,3 +96,8 @@ class ApplicationFormModel(models.Model):
     tn_promise = models.CharField(blank=True, max_length=100, verbose_name='TN Promise')
     wilder_naifeh_technical_skills = models.CharField(blank=True, max_length=100, verbose_name='Wilder-Naifeh Technical Skills Grant')
     other_state_aid = models.CharField(blank=True, max_length=100, verbose_name='Other')
+    veterans_and_dependents = models.CharField(blank=True, max_length=100, verbose_name='Financial Aid for Veterans and Their Dependents')
+    reduced_tuition_parents_work = models.CharField(blank=True, max_length=100, verbose_name='Will you receie reduced tuition because of where your parents work? If so, please explain')
+    scholarships_from_current_college = models.CharField(blank=True, max_length=100, verbose_name='Scholarships offered by your college')
+    private_scholarships = models.CharField(blank=True, max_length=100, verbose_name='Private scholarships')
+    applied_scholarships = models.CharField(blank=True, max_length=100, verbose_name='List all scholarships for which you have applied but which have not yet been awarded')
