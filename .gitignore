@@ -1,6 +1,4 @@
 db.sqlite3
 *.pyc
-geckodriver.log
 applications/migrations
-geckodriver.log
-geckodriver.log
+/geckodriver.log
