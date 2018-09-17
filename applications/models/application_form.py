@@ -28,6 +28,8 @@ WORK_TYPES = (
 
 
 class ApplicationFormModel(models.Model):
+    list_display = ['user','assistance_for']
+
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     assistance_for = models.CharField(blank=True, choices=ASSISTANCE_FOR, max_length=20, verbose_name='I am applying for Goodlark Scholarship assistance for:')
     mailing_address = models.CharField(blank=True, max_length=100, help_text='your street address')
