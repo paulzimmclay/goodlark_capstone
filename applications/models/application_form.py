@@ -3,7 +3,6 @@ from django.db import models
 
 from multiselectfield import MultiSelectField
 
-# ...
 
 ASSISTANCE_FOR = (('graduate_program', 'Graduate program'),
                   ('four_year_undergraduate', 'Four year undergraduate college program'),
