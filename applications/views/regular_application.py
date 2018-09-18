@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 
 
-from applications.forms import ApplicationUserForm, ApplicationForm
+from applications.forms import ApplicationForm
 from applications.models import ApplicationFormModel
 
 
@@ -14,25 +14,14 @@ def regular_application(request):
     
     if request.method == 'POST':
 
-        application_user_form = ApplicationUserForm(request.POST, instance=request.user)
         application_form = ApplicationForm(request.POST, instance=application)
 
-        print('forms are valid?', application_form.is_valid(), application_user_form.is_valid())
-        print(application_form.errors)
-
-        if application_user_form.is_valid() and application_form.is_valid():
-            application_user_form.save()
+        if application_form.is_valid():
             application_form.save()
             return HttpResponseRedirect('/')
         else: 
             print('forms not valid')
 
-
-    application_user_form = ApplicationUserForm(initial={
-        'first_name': request.user.first_name, 
-        'last_name': request.user.last_name,
-        'email': request.user.email,
-        })
     
     # dictionary of all user application fields
     application_dict = application.__dict__
@@ -51,6 +40,5 @@ def regular_application(request):
 
 
     return render(request, 'regular_application.html', {
-        'application_user_form': application_user_form,
         'application_form': application_form,
         })

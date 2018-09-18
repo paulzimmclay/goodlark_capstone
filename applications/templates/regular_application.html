@@ -7,12 +7,6 @@
 <form id="registration_form" method="post" action="{% url 'applications:regular_application' %}">
   {% csrf_token %}
 
-  {% for field in application_user_form %}
-  <p>
-    {{ field.label }}: {{ field }}
-  </p>
-  {% endfor %}
-
   {% for field in application_form %}
 
   <p>
