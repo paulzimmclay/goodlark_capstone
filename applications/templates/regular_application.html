@@ -1,6 +1,11 @@
 {% extends "home.html" %}
+{% load static %}
+
 
 {% block title %}Regular Application{% endblock %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/application_form.css' %}">
+{% endblock %}
 
 {% block content %}
 <h1>Goodlark Regular Application Form</h1>
