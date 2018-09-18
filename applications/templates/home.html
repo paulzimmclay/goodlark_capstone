@@ -1,17 +1,19 @@
+{% load static %}
 <html>
 
 <head>
     <title>{% block title %}Goodlark Educational Foundation{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
 </head>
 
 <body>
 
-
-    <a href="/register" id="register_button">Register</a>
-    <a href="/login_user" id="login_button">Login</a>
-    <a href="/logout_user" id="logout_button">Logout</a>
-    <a href="/regular_application" id="regular_application_button">Application</a>
-
+    <nav id="main_nav_bar">
+        <a href="/register" id="register_button">Register</a>
+        <a href="/login_user" id="login_button">Login</a>
+        <a href="/logout_user" id="logout_button">Logout</a>
+        <a href="/regular_application" id="regular_application_button">Application</a>
+    </nav>
     <div>
         {% block content %}
 
