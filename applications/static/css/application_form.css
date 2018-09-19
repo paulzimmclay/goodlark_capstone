@@ -1,3 +1,24 @@
 #application_save {
-    color: green;
+    background-color: blue/* Green */;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#application_save_container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;
+  background: blue;
+}
+
+li:nth-child(1), option:nth-child(1) {
+    display: none;
 }
