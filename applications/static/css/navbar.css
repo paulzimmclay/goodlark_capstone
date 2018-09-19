@@ -23,3 +23,18 @@ article#main_content {
     margin-left: 10%;
     margin-right: 10%;
 }
+
+#main_content {
+    font-size: 1.5em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+
+}
+
+#home_page_copy {
+    margin-top: 30px;
+    text-align: justify;
+}

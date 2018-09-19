@@ -9,7 +9,8 @@ ASSISTANCE_FOR = (('graduate_program', 'Graduate program'),
                   ('two_year_associate', 'Two year associate program'),
                   ('certificate_program', 'Certificate program'),)
 
-PAYER = (('mother', 'Mother'),
+PAYER = (('blank','blank'),
+         ('mother', 'Mother'),
          ('father', 'Father'),
          ('step-parent', 'Step-parent'),
          ('guardian', 'Guardian'),
@@ -19,7 +20,7 @@ PAYER = (('mother', 'Mother'),
 YES_NO = (('yes', 'Yes'),
           ('no', 'No'),)
 
-WORK_TYPES = (
+WORK_TYPES = (('blank','blank'),
     ('full_time','Full time'),
     ('part_time','Part time'),
     ('work_study','Work/Study'),
@@ -69,7 +70,7 @@ class ApplicationFormModel(models.Model):
     hours_per_week = models.CharField(blank=True, max_length=100, verbose_name='How many hours per week?')
     pay_per_hour = models.CharField(blank=True, max_length=100, verbose_name='Pay per hour?')
     plan_to_work_in_college = models.CharField(blank=True, choices=YES_NO, max_length=20, verbose_name='Do you plan to work in college?')
-    expense_payer = MultiSelectField(blank=True, choices=WORK_TYPES, max_length=20, verbose_name='What type of work?')
+    work_types = MultiSelectField(blank=True, choices=WORK_TYPES, max_length=20, verbose_name='What type of work?')
     clubs_and_activities = models.TextField(blank=True, max_length=500, verbose_name='List school clubs and activities in which you have participated')
     volunteer_activities = models.TextField(blank=True, max_length=500, verbose_name='List community/volunteer activities in which you have participated')
     honors_and_awards = models.TextField(blank=True, max_length=500, verbose_name='List honors and awards which you have received')

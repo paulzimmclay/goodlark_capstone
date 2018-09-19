@@ -14,13 +14,19 @@
 
   {% for field in application_form %}
 
-  <p>
-    {{ field.label }}: {{ field }} {{ field.help_text }}
-  </p>
+  <div class="form_field_container">
+    <div class="form_label_help_container">
+      <p class="form_label">{{ field.label }}</p>
+      <p class="form_help_field">{{ field.help_text }}</p>
+    </div>
+    <div class="form_field_input_container">
+      {{ field }}
+    </div>
+  </div>
 
   {% endfor %}
   <div id="application_save_container">
-    <input id="application_save" type="submit" name="submit" value="Save" />
+    <input id="application_save" type="submit" name="submit" value="Save and Exit" />
   </div>
 </form>
 {% endblock %}

@@ -1,11 +1,11 @@
 #application_save {
-    background-color: blue/* Green */;
+    background-color: blue;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 #application_save_container {
@@ -14,11 +14,70 @@
   position: fixed;
   left: 0px;
   bottom: 0px;
-  height: 40px;
+  height: 60px;
   width: 100%;
   background: blue;
 }
 
+/* Removes option for null multiple choice on radio buttons and dropdowns */
 li:nth-child(1), option:nth-child(1) {
     display: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+.form_field_container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.form_label_help_container {
+    width: 50%;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.form_field_input_container {
+    width: 50%;
+    align-content: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.form_label {
+    font-size: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+
+.form_help_field {
+    font-size: .8em;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* targets text input fields only */
+input[id*='id'][type='text'] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.2em
+}
+
+/* Extra margin for second to last div (to exclude save button) */
+#registration_form > div:nth-last-of-type(2) {
+    margin-bottom: 80px;
 }

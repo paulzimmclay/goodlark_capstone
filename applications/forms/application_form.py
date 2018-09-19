@@ -11,4 +11,5 @@ class ApplicationForm(forms.ModelForm):
             'already_accumulated_debt': forms.RadioSelect(),
             'previously_received_goodlark': forms.RadioSelect(),
             'family_received_scholarship': forms.RadioSelect(),
+            'expense_payer': forms.CheckboxSelectMultiple(),
         }
