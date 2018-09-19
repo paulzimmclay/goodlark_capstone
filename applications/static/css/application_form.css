@@ -31,7 +31,6 @@ li {
 .form_field_container {
     display: flex;
     justify-content: center;
-    padding: 10px;
 }
 
 .form_label_help_container {
